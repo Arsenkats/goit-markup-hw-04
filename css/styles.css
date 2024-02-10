@@ -79,6 +79,29 @@ header ul{
     font-weight: 500;
     padding-top: 24px;
     padding-bottom: 24px;
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active{
+    color: #404bbf;
+}
+
+.menu::after {
+    height: 4px;
+    border-radius: 2px;
+    background-color: #404bbf;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: scaleX(0); 
+}
+
+.menu.active::after{
+    transform: scaleX(1);
 }
 
 .menu:focus,
@@ -102,9 +125,9 @@ header ul{
     color: #2e2f42;
 }
 
-.contacts{
+.contacts a{
     font-style: normal;
-    
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-ul{
@@ -131,21 +154,29 @@ header ul{
 
 /* section 1 */
 
-.solution{
+.hero{
     background: #2e2f42;
+    background-image: linear-gradient(to bottom,
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)),
+        url(../images/hero/hero-bg.jpg);
     padding-top: 188px;
     padding-bottom: 188px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
-.solution-content{
+.hero-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 48px;
+
 }
 
-.solution-title{
+.hero-title{
     max-width: 496px;
     letter-spacing: 0.02em;
     line-height: 1.07;
@@ -166,6 +197,7 @@ header ul{
     border-radius: 4px;
     padding: 16px 32px;
     min-width: 169px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .order-button:focus,
@@ -218,6 +250,20 @@ header ul{
     margin-bottom: 8px;
 }
 
+.advantages-icon-container{
+    background-color: #f4f4fd;
+    border: 1px solid #8e8f99;
+    border-radius: 4px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+}
+
+.advantages-icon{
+    fill: none;
+    display: block;
+    margin: 0 auto;
+}
 
 /* section 3 */
 
@@ -246,6 +292,9 @@ header ul{
     width: calc((100% - 3 * 24px) / 4);
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
+                0 1px 1px 0 rgba(46, 47, 66, 0.16),
+                0 1px 6px 0 rgba(46, 47, 66, 0.08);
 
 }
 
@@ -272,6 +321,29 @@ header ul{
 .team-paragraph{
     font-size: 16px;
     text-align: center;
+    margin-bottom: 8px;
+}
+
+.social-networks{
+    list-style-type: none;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.social-link-bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4d5ae5;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-link-bg:focus,
+.social-link-bg:hover{
+    background-color: #404bbf;
 }
 
 /* section 4 */
@@ -295,10 +367,46 @@ header ul{
 
 .portfolio-item{
     width: calc((100% - 2 * 24px) / 3);
+    box-shadow: none;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.portfolio-item:focus,
+.portfolio-item:hover{
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
+                0 1px 1px 0 rgba(46, 47, 66, 0.16),
+                0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 
 .portfolio-img{
     display: block;
+}
+
+.portfolio-img-container{
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    padding: 32px;
+    background-color: #4d5ae5;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #f4f4fd;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:focus .overlay,
+.portfolio-item:hover .overlay {
+    transform: translateY(0);
 }
 
 .portfolio-content{
@@ -324,6 +432,11 @@ header ul{
     padding: 100px 0;
 }
 
+.footer-container{
+    display: flex;
+    gap: 120px;
+}
+
 .footer-logo{
     display: inline-block;
     text-decoration: none;
@@ -344,4 +457,28 @@ header ul{
 .footer-paragraph{
     color: #f4f4fd;
     max-width: 264px;
+}
+
+.footer-social-links{
+    max-width: 208px;
+}
+
+.social-title{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.footer-social-links .social-networks {
+    gap: 16px;
+    justify-content: flex-start;
+    
+}
+
+.footer-social-links .social-link-bg:focus,
+.footer-social-links .social-link-bg:hover {
+    background-color: #31d0aa;
 }
